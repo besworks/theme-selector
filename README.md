@@ -18,8 +18,8 @@ With either type of usage, `auto` mode will update the theme on-the-fly if the u
 
 ## Known Issues
 
-1. Unfortunately (especially for myself) [xfwm4](https://docs.xfce.org/xfce/xfwm4/start) does not implement a system-wide dark mode setting that can be detected by this module.
+1. `localStorage` is not available in a [sandboxed](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox) `<iframe>` so the user's selected theme preference cannot be saved if this module is used inside this type of enviroment. However, you can still use `auto`  mode in this scenario.
 
-2. `localStorage` is not available in a [sandboxed](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox) `<iframe>` so the user's selected theme preference cannot be saved if this module is used inside this type of enviroment. However, you can still use `auto`  mode in this scenario.
+2. To prevent a [flash of unstyled content](https://en.wikipedia.org/wiki/Flash_of_unstyled_content#:~:text=A%20flash%20of%20unstyled%20content,before%20all%20information%20is%20retrieved.) on page loads after the user has selected a theme, you should serve this module with a caching policy that allows it to be read from disk or memory cache without revalidating. An example `.htaccess` file is included in this repo.
 
-3. To prevent a [flash of unstyled content](https://en.wikipedia.org/wiki/Flash_of_unstyled_content#:~:text=A%20flash%20of%20unstyled%20content,before%20all%20information%20is%20retrieved.) on page loads after the user has selected a theme, you should serve this module with a caching policy that allows it to be read from disk or memory cache without revalidating. An example `.htaccess` file is included in this repo.
+3. Unfortunately (especially for myself) [xfwm4](https://docs.xfce.org/xfce/xfwm4/start) does not implement a system-wide dark mode setting that can be detected by this module.

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title> Advanced Usage - Theme Selector </title>
+<style>
+  html.light { --bg: #eeeeee; --fg: #222222; }
+  html.dark  { --bg: #222222; --fg: #eeeeee; }
+  html.sage  { --bg: #456e2f; --fg: #dbdbc1; }
+  html.hot   { --bg: #e17e2a; --fg: #af0505; }
+  html.cool  { --bg: #607a89; --fg: #cfcfcf; }
+  body { background: var(--bg); color: var(--fg); }
+</style>
+<script type="module" src="./theme-selector.js"></script>
+<h1> Select a Theme </h1>
+<p> This is an advanced example. </p>
+<p> Multiple themes can be offered to the user
+    and they can select their preference.
+</p>
+<select id="theme-selector">
+  <option value="auto"> Auto</option>
+  <option value="light"> Light </option>
+  <option value="dark"> Dark </option>
+  <option value="sage"> Sage </option>
+  <option value="hot"> Hot </option>
+  <option value="cool"> Cool </option>
+</select>
+<script type="module">
+  import { getTheme, setTheme } from './theme-selector.js';
+  let selector = document.getElementById('theme-selector');
+  selector.value = getTheme();
+  selector.addEventListener('click', event => setTheme(selector.value));
+</script>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title> Basic Usage - Theme Selector  </title>
+<style>
+  html.light { --bg: #ffffff; --fg: #000000; }
+  html.dark  { --bg: #222222; --fg: #eeeeee; }
+  body { background: var(--bg); color: var(--fg); }
+</style>
+<script type="module" src="./theme-selector.js"></script>
+<h1> Auto Dark/Light Mode Test </h1>
+<p> This is the bare minimum usage. </p>
+<p> Either the light or dark theme will be selected
+    based on the user's system-wide dark-mode preference.
+</p>

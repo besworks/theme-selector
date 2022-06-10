@@ -16,6 +16,8 @@ The selected theme is stored in [`localStorage`](https://developer.mozilla.org/e
 
 With either type of usage, `auto` mode will update the theme on-the-fly if the user changes their system-wide preference or it changes based on the light sensor in their device.
 
+The CSS rules used in the examples are just a bare-bones demonstrations, you can add whatever complex styles you want to each theme. However, both the `html.light` and `html.dark` class names are are hard-coded in and required for `auto` mode to function.
+
 ## Known Issues
 
 1. `localStorage` is not available in a [sandboxed](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox) `<iframe>` so the user's selected theme preference cannot be saved if this module is used inside this type of enviroment. However, you can still use `auto`  mode in this scenario.

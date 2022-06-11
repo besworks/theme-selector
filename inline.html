@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title> Inline Example - Theme Selector </title>
+<style>
+  html.light { --bg: #eeeeee; --fg: #222222; }
+  html.dark  { --bg: #222222; --fg: #eeeeee; }
+  html.sage  { --bg: #456e2f; --fg: #dbdbc1; }
+  html.hot   { --bg: #ef642f; --fg: #ffffff; }
+  html.cool  { --bg: #607a89; --fg: #cfcfcf; }
+  
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    margin: 1.5rem;
+  }
+
+  #selector button {
+    border:0;
+    background: none;
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer
+  }
+</style>
+<script>
+  let prefersDark = matchMedia('(prefers-color-scheme: dark)');
+  prefersDark.addEventListener('change', event => loadTheme());
+
+  function setTheme(theme) {
+    if (theme == 'auto') {
+      localStorage.removeItem('theme');
+      loadTheme(null);
+    } else {
+      localStorage.setItem('theme', theme);
+      applyTheme(theme);
+    }
+  }
+
+  function loadTheme(theme) {
+    theme = localStorage.getItem('theme');
+    theme ??= (prefersDark.matches) ? 'dark' : 'light';
+    applyTheme(theme);
+  }
+
+  function applyTheme(theme) {
+    console.log('Applying theme:', theme);
+    document.documentElement.className = theme;
+  }
+
+  window.setTheme = setTheme;
+
+  loadTheme();
+</script>
+<h1> Inline Example </h1>
+<div id="selector">
+  <button id="auto">Auto</button>
+  <button id="light">Light</button>
+  <button id="dark">Dark</button>
+  <button id="sage">Sage</button>
+  <button id="hot">Hot</button>
+  <button id="cool">Cool</button>
+</div>
+<script>
+  let selector = document.getElementById('selector');
+  selector.addEventListener('click', event => {
+    if (event.target == selector) { return; }
+    window.setTheme(event.target.id);
+  });
+</script>

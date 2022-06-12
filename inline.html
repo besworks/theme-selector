@@ -21,6 +21,10 @@
     text-decoration: underline;
     cursor: pointer
   }
+  
+  #selector button * {
+    pointer-events: none;
+  }
 </style>
 <script>
   let prefersDark = matchMedia('(prefers-color-scheme: dark)');
